@@ -47,7 +47,7 @@ export default {
   created() {
     var that = this;
     var id = that.$route.params.id;
-    this.$emit('handleLoading')
+    this.$emit('handleLoading');
     axios.all([this.loadDetail(id), this.loadInfo(id)]).then(axios.spread(function (acct, perms) {
      that.$emit('handleLoading')
     }));
@@ -67,15 +67,15 @@ export default {
     loadInfo(id) {
       api.getList().then(list => {
         var sha = list.filter(({ name }) => {
-          return name == 'index.json'
+          return name === 'index.json'
         })[0].sha;
         var name = list.filter(({ sha }) => {
-          return sha == id
+          return sha === id
         })[0].name;
         api.getIndex(sha).then(index => {
           var result = index.filter(({ title }) => {
-            return name.replace(/\.md$/, '') == title
-          })[0]
+            return name.replace(/\.md$/, '') === title
+          })[0];
           if (result) {
             setTitle(result.title);
             this.article = result;

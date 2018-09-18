@@ -2,11 +2,11 @@ import marked from 'marked'
 import hljs from 'highlight.js/lib/'
 
 
-let renderer = new marked.Renderer()
+let renderer = new marked.Renderer();
 renderer.heading = function (text, level) {
   let id = generateId();
   return `<h${level} id="${id}">${text}</h${level}>`;
-}
+};
 
 marked.setOptions({
   renderer: renderer,

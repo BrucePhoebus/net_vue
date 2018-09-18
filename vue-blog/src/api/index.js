@@ -15,12 +15,12 @@ const Cache = {
   has: (key) => {
     return Boolean(window.sessionStorage && window.sessionStorage.hasOwnProperty(key))
   }
-}
+};
 
 function getListUrl() {
-  let url = `https://api.github.com/repos/${config.repo}/contents/`
-  if (config.path) url += config.path
-  if (config.branch) url += `?ref=${config.branch}`
+  let url = `https://api.github.com/repos/${config.repo}/contents/`;
+  if (config.path) url += config.path;
+  if (config.branch) url += `?ref=${config.branch}`;
   return url
 }
 
@@ -36,7 +36,7 @@ export default {
       return axios.get(getListUrl())
         .then(res => res.data)
         .then(arr => {
-          Cache.set('list', arr)
+          Cache.set('list', arr);
           return arr;
         })
     }
@@ -45,8 +45,8 @@ export default {
   getDetail(sha) {
     const httpOpts = {
       headers: { Accept: 'application/vnd.github.v3.raw' }
-    }
-    const cacheKey = 'detail.' + sha
+    };
+    const cacheKey = 'detail.' + sha;
 
     if (Cache.has(cacheKey)) {
       return Promise.resolve(Cache.get(cacheKey))
@@ -54,7 +54,7 @@ export default {
       return axios.get(getPostUrl(sha), httpOpts)
         .then(res => res.data)
         .then(content => {
-          Cache.set(cacheKey, content)
+          Cache.set(cacheKey, content);
           return content
         })
     }
@@ -63,14 +63,14 @@ export default {
   getIndex(sha) {
     const httpOpts = {
       headers: { Accept: 'application/vnd.github.v3.raw' }
-    }
+    };
     if (Cache.has('index')) {
       return Promise.resolve(Cache.get('index'))
     } else {
       return axios.get(getPostUrl(sha), httpOpts)
         .then(res => res.data.articles)
         .then(content => {
-          Cache.set('index', content)
+          Cache.set('index', content);
           return content
         })
     }

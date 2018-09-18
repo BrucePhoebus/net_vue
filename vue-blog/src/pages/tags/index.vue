@@ -25,12 +25,12 @@ export default {
     loading: Boolean
   },
   created () {
-    this.loadList()
+    this.loadList();
     setTitle(blogConfig.title);
   },
   methods: {
     loadList () {
-      this.$emit('handleLoading')
+      this.$emit('handleLoading');
       api.getList().then(list => {
         api.getIndex().then(index => {
           var res = {};
@@ -44,7 +44,7 @@ export default {
               }
               res[key].push({ title, id })
             })
-          })
+          });
           this.list = res;
           this.$emit('handleLoading')
         })

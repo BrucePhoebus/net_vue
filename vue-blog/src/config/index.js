@@ -1,6 +1,6 @@
 export const blogConfig = {
   title: "I'm yanm1ng"
-}
+};
 export const gitmentConfig = {
   owner: 'yanm1ng',
   repo: 'yanm1ng.github.io',
@@ -10,13 +10,13 @@ export const gitmentConfig = {
   },
   theme: {
     render(state, instance) {
-      const container = document.createElement('div')
-      container.lang = "en-US"
-      container.className = 'gitment-container gitment-root-container'
-      container.appendChild(instance.renderHeader(state, instance))
-      container.appendChild(instance.renderEditor(state, instance))
-      container.appendChild(instance.renderComments(state, instance))
-      container.appendChild(instance.renderFooter(state, instance))
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
       return container;
     }
   }

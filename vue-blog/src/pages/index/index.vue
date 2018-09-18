@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     loadList () {
-      this.$emit('handleLoading')
+      this.$emit('handleLoading');
       api.getList().then(list => {
         api.getIndex(list.filter(({ name }) => {
           return name === 'index.json';
