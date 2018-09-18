@@ -30,7 +30,7 @@ export default {
     }
   },
   created () {
-    this.loadList()
+    this.loadList();
     setTitle(blogConfig.title);
   },
   methods: {
@@ -38,15 +38,15 @@ export default {
       this.$emit('handleLoading')
       api.getList().then(list => {
         api.getIndex(list.filter(({ name }) => {
-          return name == 'index.json'
+          return name === 'index.json';
         })[0].sha)
         .then(index => {
           this.list = index.map(item => {
             item.id = list.filter(({ name }) => {
-              return name.replace(/\.md$/, '') == item.title
+              return name.replace(/\.md$/, '') === item.title;
             })[0].sha;
             return item;
-          }).reverse()
+          }).reverse();
           this.$emit('handleLoading')
         })
       })

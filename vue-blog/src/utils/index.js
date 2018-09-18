@@ -7,6 +7,6 @@ export function setTitle(title) {
     setTimeout(function () {
       i.parentNode.removeChild(i);
     }, 9)
-  }
+  };
   document.body.appendChild(i);
 }
