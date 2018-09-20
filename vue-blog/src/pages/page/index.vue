@@ -35,7 +35,7 @@ export default {
     }
   },
   created () {
-    this.loadList()
+    this.loadList();
     setTitle(blogConfig.title);
   },
   updated () {

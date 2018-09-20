@@ -28,18 +28,18 @@ export default {
   },
   methods: {
     loadList () {
-      this.$emit('handleLoading')
+      this.$emit('handleLoading');
       api.getList().then(list => {
         api.getIndex(list.filter(({ name }) => {
-          return name == 'index.json'
+          return name === 'index.json'
         })[0].sha)
         .then(index => {
           list = index.map(item => {
             item.id = list.filter(({ name }) => {
-              return name.replace(/\.md$/, '') == item.title
+              return name.replace(/\.md$/, '') === item.title
             })[0].sha;
             return item;
-          })
+          });
           var archives = {};
           list.forEach(post => {
             const y = new Date(post.date).getFullYear();
@@ -47,7 +47,7 @@ export default {
               archives[y] = [];
             }
             archives[y].push(post);
-          })
+          });
           this.archives = archives;
           this.$emit('handleLoading')
         })
